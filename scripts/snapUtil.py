@@ -166,11 +166,7 @@ def snapName(suffix=''):
 
 
 def destPath(suffix=''):
-    if suffix == 'q':
-        return os.path.join(snapsPath(), "quick", snapName(suffix))
-    else:
-        suffix = ''
-        return os.path.join(snapsPath(), "logged", snapName(suffix))
+    return os.path.join(snapsPath(), snapName(suffix))
 
 
 def sceneID():
@@ -256,7 +252,7 @@ def snap(logEntry=False):
         initialSave()
 
     debug('checking if quick snap')
-    suffix = 'q' if logEntry is False else logEntry
+    quickFlag = 'q' if logEntry is False else ''
 
     debug('tagging file...')
     if not tagScene(snapTime()):
@@ -268,14 +264,14 @@ def snap(logEntry=False):
 
     debug('attempting to save snap...')
     try:
-        lx.eval('scene.saveAs {%s} export:1' % destPath(suffix))
-        lx.out('saved snap: %s' % destPath(suffix))
+        lx.eval('scene.saveAs {%s} export:1' % destPath(quickFlag))
+        lx.out('saved snap: %s' % destPath(quickFlag))
         if logEntry:
-            log(logEntry, snapName(suffix))
+            log(logEntry, snapName(quickFlag))
         elif logEntry == False and debugMode() == True:
-            log('(quick snap)', snapName(suffix))
+            log('(quick snap)', snapName(quickFlag))
     except:
-        errorDialog('Unable to save snap "%s". Nothing was saved.' % snapName(suffix))
+        errorDialog('Unable to save snap "%s". Nothing was saved.' % snapName(quickFlag))
 
     debug('attempting to save current...')
     try:
