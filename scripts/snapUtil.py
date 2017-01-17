@@ -7,8 +7,6 @@ import sys
 import time
 from inspect import currentframe, getframeinfo
 
-SNAPTIME = time.strftime("%Y%m%d-%H%M%S")
-
 def quickSnapMax():
     return lx.eval('user.value mecco_snap.quickSnapMax ?')
 
@@ -158,7 +156,7 @@ def snapsPathExists():
 
 
 def snapTime():
-    return SNAPTIME
+    return time.strftime("%Y%m%d-%H%M%S")
 
 
 def snapName(suffix=''):
