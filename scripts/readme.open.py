@@ -1,7 +1,8 @@
-#python
+# python
 
-#by Alex
+# by Alex
 
+import lx
 import snapUtil
 import readmeUtil
 import os
@@ -9,9 +10,9 @@ import os
 readmePath = readmeUtil.readmePath()
 
 if readmePath:
-	if os.path.isfile(readmePath):
-		lx.eval('file.open {%s}' % readmePath)
-	else:
-		snapUtil.errorDialog('No log file exists.')
+    if os.path.isfile(readmePath):
+        lx.eval('file.open {%s}' % readmePath)
+    else:
+        snapUtil.errorDialog('No log file exists.')
 else:
-	snapUtil.errorDialog('Something\'s gone terribly wrong.')
+    snapUtil.errorDialog('Something\'s gone terribly wrong.')

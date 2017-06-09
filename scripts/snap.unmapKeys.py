@@ -1,5 +1,6 @@
 # python
 
+import lx
 import modo
 
 lx.eval('!cmds.mapKey ctrl-s scene.save .global (stateless) .anywhere')

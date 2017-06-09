@@ -1,4 +1,4 @@
-#python
+# python
 
 import lx
 import re
@@ -127,11 +127,13 @@ def initialSave():
 def sceneName():
     return re.sub('\..*', '', fileName())
 
+
 def isProject():
     if projectPath() and lx.eval('user.value mecco_snap.projectSnaps ?'):
         return True
     else:
         return False
+
 
 def snapsDirName():
     if isProject():
@@ -139,14 +141,17 @@ def snapsDirName():
     else:
         return sceneName() + '_snaps'
 
+
 def snapsBasePath():
     if isProject():
         return projectPath()
     else:
         return filePath()
 
+
 def snapsPath():
     return os.path.join(snapsBasePath(), snapsDirName())
+
 
 def snapsPathExists():
     if os.path.isdir(snapsPath()) == 0:
@@ -206,9 +211,9 @@ def log(entry='generic', stamp=False):
         if not stamp:
             stamp = time.strftime("%Y/%m/%d - %H:%M:%S")
         if entry:
-            log.write('%s: %s\n' % ( stamp, entry))
+            log.write('%s: %s\n' % (stamp, entry))
         else:
-            log.write('%s: %s\n' % ( stamp, '-'))
+            log.write('%s: %s\n' % (stamp, '-'))
         lx.out('log entry: "%s"' % entry)
         return True
     else:
@@ -219,7 +224,7 @@ def selection_mode(*types):
     if not types:
         types = ('vertex', 'edge', 'polygon', 'item', 'pivot', 'center', 'ptag')
         for t in types:
-            if lx.eval('select.typeFrom %s;vertex;edge;polygon;item;pivot;center;ptag ?' %t):
+            if lx.eval('select.typeFrom %s;vertex;edge;polygon;item;pivot;center;ptag ?' % t):
                 return t
 
 

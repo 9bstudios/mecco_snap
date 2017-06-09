@@ -1,6 +1,6 @@
-#python
+# python
 
-#by Adam
+# by Adam
 
 import snapUtil
 
